@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Registration_of_Insured.Models.Insured>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Seznam pojištěnců</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.HouseNumber)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.TelephoneNumber)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.HouseNumber)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary rounded-pill px-3">Upravit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary rounded-pill px-3">Detail</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary rounded-pill px-3">Smazat</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-secondary rounded-pill px-3">Nový pojištěnec</a>
+</p>

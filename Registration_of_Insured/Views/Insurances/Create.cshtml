@@ -1,0 +1,52 @@
+﻿@model Registration_of_Insured.Models.Insurance
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nové pojištění</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KindOfInsurance" class="control-label"></label>
+                <input asp-for="KindOfInsurance" class="form-control" />
+                <span asp-validation-for="KindOfInsurance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaimSettlement" class="control-label"></label>
+                <input asp-for="ClaimSettlement" class="form-control" />
+                <span asp-validation-for="ClaimSettlement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObjectOfInsurance" class="control-label"></label>
+                <input asp-for="ObjectOfInsurance" class="form-control" />
+                <span asp-validation-for="ObjectOfInsurance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidFrom" class="control-label"></label>
+                <input asp-for="ValidFrom" class="form-control" />
+                <span asp-validation-for="ValidFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidTo" class="control-label"></label>
+                <input asp-for="ValidTo" class="form-control" />
+                <span asp-validation-for="ValidTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsuredId" class="control-label"></label>
+                <select asp-for="InsuredId" class ="form-control" asp-items="ViewBag.InsuredId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Vytvořit pojištění" class="btn btn-secondary rounded-pill px-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

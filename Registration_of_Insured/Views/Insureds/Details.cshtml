@@ -1,0 +1,100 @@
+﻿@model Registration_of_Insured.Models.Insured
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detail pojištěnce</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TelephoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TelephoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HouseNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HouseNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+    </dl>
+</div>
+<h3>Sjednaná pojištění</h3>
+@if (Model.Insurances.Count > 0)
+{   
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th class="text-center">Typ pojištění</th>
+                <th class="text-center">Částka</th>
+                <th class="text-center">Předmět pojištění</th>
+                <th class="text-center">Platí od</th>
+                <th class="text-center">Platí do</th>
+                <th ></th>
+                <th ></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Insurances)
+            {
+                <tr>
+                    <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.KindOfInsurance)</td>
+                    <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ClaimSettlement)</td>
+                    <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ObjectOfInsurance)</td>
+                    <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ValidFrom)</td>
+                    <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ValidTo)</td>
+                    <td class="text-center"><a asp-controller="Insurances" asp-action="Edit" asp-route-insuredId="@item.Id" class="btn btn-secondary rounded-pill px-3">Upravit pojištění</a></td>
+                    <td class="text-center"><a asp-controller="Insurances" asp-action="Delete" asp-route-insuredId="@item.Id" class="btn btn-secondary rounded-pill px-3">Odstranit pojištění</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Tento pojištěnec nemá žádné pojištění.</p>
+}
+<div>
+    <a asp-controller="Insurances" asp-action="Create" asp-route-insuredId="@Model?.Id" class="btn btn-secondary rounded-pill px-3">Přidat pojištění pojištěnci</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary rounded-pill px-3">Upravit pojištěnce</a>
+</div>

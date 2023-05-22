@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Registration_of_Insured.Models.Insurance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Seznam pojištění</h1>
+    <a asp-action="Create" class="btn btn-secondary rounded-pill px-3">Vytvořit pojištění</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.KindOfInsurance)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ClaimSettlement)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ObjectOfInsurance)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ValidFrom)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.ValidTo)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Insured)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.KindOfInsurance)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ClaimSettlement)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ObjectOfInsurance)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ValidFrom)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ValidTo)
+            </td>
+                <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.Insured.Surname)
+            </td>
+                <td class="text-center">
+                    <a asp-controller="Insurances" asp-action="Edit" asp-route-insuredId="@item.Id" class="btn btn-secondary rounded-pill px-3">Upravit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary rounded-pill px-3">Detail</a>
+                    <a asp-controller="Insurances" asp-action="Delete" asp-route-insuredId="@item.Id" class="btn btn-secondary rounded-pill px-3">Smazat</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
